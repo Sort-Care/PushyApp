@@ -17,6 +17,11 @@
 @end
 
 @implementation ViewController
+- (IBAction)scheduleTapped:(id)sender {
+    
+    [self requestPermissionToNotify];
+    [self createANotification:5];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +34,14 @@
 }
 
 - (void) requestPermissionToNotify{
+    
+    UIMutableUserNotificationAction *floatAction = [[UIMutableUserNotificationAction alloc] init];
+    floatAction.identifier = @"FLOAT_ACTION";
+    floatAction.title = @"Float";
+    floatAction.activationMode = UIUserNotificationActivationModeBackground;
+    floatAction.destructive = YES;
+    floatAction.authenticationRequired = NO;
+    
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];

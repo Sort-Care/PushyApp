@@ -42,6 +42,18 @@
     floatAction.destructive = YES;
     floatAction.authenticationRequired = NO;
     
+    UIMutableUserNotificationAction *stingAction = [[UIMutableUserNotificationAction alloc] init];
+    stingAction.identifier = @"STING_Action";
+    stingAction.title = @"Sting";
+    stingAction.activationMode = UIUserNotificationActivationModeForeground;
+    stingAction.destructive = NO;
+    stingAction.authenticationRequired = NO;
+    
+    UIMutableUserNotificationCategory *category = [[UIMutableUserNotificationCategory alloc] init];
+    category.identifier = @"MAIN_CATEGORY";
+    
+    
+    
     UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
     [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
